@@ -1,0 +1,38 @@
+{
+  "name": "groupme-cli",
+  "version": "1.0.0",
+  "description": "Command-line interface for GroupMe messaging",
+  "main": "dist/index.js",
+  "bin": {
+    "groupme": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "groupme",
+    "cli",
+    "messaging",
+    "chat"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "commander": "^14.0.3",
+    "groupme": "^0.5.8"
+  },
+  "devDependencies": {
+    "@types/node": "^25.2.0",
+    "typescript": "^5.9.3"
+  }
+}
