@@ -30,9 +30,12 @@ jobs:
         id: pkg
         run: echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
 
-      - name: Publish skill to ClawHub
+      - name: Login to ClawHub
         env:
           CLAWHUB_TOKEN: ${{ secrets.CLAWHUB_TOKEN }}
+        run: clawhub login --token "$CLAWHUB_TOKEN" --no-browser
+
+      - name: Publish skill to ClawHub
         run: |
           clawhub publish ./skills/groupme-cli \
             --slug groupme-cli \
