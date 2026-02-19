@@ -15,7 +15,7 @@ A command-line interface for GroupMe messaging, built with TypeScript.
 ### From source
 
 ```bash
-git clone <repository>
+git clone https://github.com/cuuush/groupme-cli
 cd groupme-cli
 npm install
 npm run build

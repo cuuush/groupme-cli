@@ -18,8 +18,8 @@
     "messaging",
     "chat"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "cuuush",
+  "license": "MIT",
   "type": "commonjs",
   "files": [
     "dist"
@@ -34,5 +34,13 @@
   "devDependencies": {
     "@types/node": "^25.2.0",
     "typescript": "^5.9.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cuuush/groupme-cli.git"
+  },
+  "homepage": "https://github.com/cuuush/groupme-cli",
+  "bugs": {
+    "url": "https://github.com/cuuush/groupme-cli/issues"
   }
 }
