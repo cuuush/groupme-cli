@@ -1,0 +1,41 @@
+name: Publish to ClawHub
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Bundle CLI
+        run: npm run bundle
+
+      - name: Install clawhub CLI
+        run: npm install -g clawhub
+
+      - name: Read version from package.json
+        id: pkg
+        run: echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
+
+      - name: Publish skill to ClawHub
+        env:
+          CLAWHUB_TOKEN: ${{ secrets.CLAWHUB_TOKEN }}
+        run: |
+          clawhub publish ./skills/groupme-cli \
+            --slug groupme-cli \
+            --name "GroupMe CLI" \
+            --version "${{ steps.pkg.outputs.version }}" \
+            --changelog "Auto-published from GitHub Actions"

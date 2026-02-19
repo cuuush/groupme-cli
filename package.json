@@ -4,13 +4,14 @@
   "description": "Command-line interface for GroupMe messaging",
   "main": "dist/index.js",
   "bin": {
-    "groupme": "./dist/index.js"
+    "groupme": "./dist/groupme-cli.js"
   },
   "scripts": {
     "build": "tsc",
-    "start": "node dist/index.js",
+    "bundle": "esbuild src/index.ts --bundle --platform=node --target=node16 --outfile=dist/groupme-cli.js --external:groupme && chmod +x dist/groupme-cli.js",
+    "start": "node dist/groupme-cli.js",
     "dev": "tsc --watch",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run bundle"
   },
   "keywords": [
     "groupme",
@@ -33,6 +34,7 @@
   },
   "devDependencies": {
     "@types/node": "^25.2.0",
+    "esbuild": "^0.27.3",
     "typescript": "^5.9.3"
   },
   "repository": {
